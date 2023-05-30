@@ -18,7 +18,7 @@ function TopPostItem(props: {
             <img className="w-full rounded-lg" src={mockData.postImageURL} alt={mockData.title} />
             <div className={`${displayContent&&styles['display_content']}`}>
                 <h4 className={`${styles['post_title']} ${topContent && styles['top_content']} my-2`}>{mockData.title}</h4>
-                <p className={`${styles['author_title']} mb-2`}>{mockData.author}</p>
+                <p className={`${styles['author']} mb-2`}>{mockData.author}</p>
                 {displayContent && <p className={styles['post_content']}>{mockData.content}</p>}
             </div>
         </div>
