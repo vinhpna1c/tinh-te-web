@@ -1,4 +1,7 @@
+
 function CommunityItem() {
+   
+   
     return (
         <div className='px-2 pb-1'>
             <span>

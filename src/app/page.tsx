@@ -1,3 +1,4 @@
+"use client";
 import Image from 'next/image'
 
 import Header from './sections/Header'
@@ -13,8 +14,15 @@ import ComputexItem from './components/ComputexItem'
 import ThreadItem from './components/ThreadItem'
 import NavBar from './sections/NavBar'
 import ThreadColumn from './components/ThreadColumn'
+import { useEffect } from 'react'
+import AmityAuth from '../services/amity.auth.service'
 
 export default function Home() {
+  useEffect(()=>{
+    AmityAuth.init().then((_)=>{
+      console.info("Init service");
+    });
+  },[])
   return (
     <div>
 
@@ -53,7 +61,7 @@ export default function Home() {
             <div className='flex flex-row justify-between'>
               <h3 className={styles['heading_title']}>Xem nhanh</h3>
               <span>
-                <a className={styles['expand_title']} href='#'>Xem tất cả</a>
+                <a className={styles['expand_title']} href='/chuyen-trang-xem-nhanh'>Xem tất cả</a>
               </span>
             </div>
             <div className={`${styles['quick_feed_container']} px-4 pb-4`}>
