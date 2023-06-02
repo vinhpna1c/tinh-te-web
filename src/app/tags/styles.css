@@ -1,0 +1,104 @@
+.tags--container {
+    width: 100%;
+    padding: 30px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tags--wrapper {
+    width: 57%;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 35px;
+}
+
+.tags--tagsname {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;   
+}
+
+.tags--name {
+    font-size: 32px;
+    font-weight: 700;
+    text-transform: capitalize;
+    margin-bottom: 12px;
+}
+
+.tags--button {
+    min-width: 150px;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 4px;
+    background: #0768ea; 
+    color: white; 
+}
+
+.tags--posts {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+.tags--post_item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* .tags--item_img {
+    width: 50%;   
+} */
+
+.tags--post_item img {
+    border-radius: 8px;
+    width: 240px; 
+    height: 150px;
+}
+
+.tags--item_content {
+    width: calc(100% - 240px - 3%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+}  
+
+.tags--item_content h1 {
+    font-weight: 700;
+    font-size: 18px;
+    color: #4a5568;
+}
+
+.tags--item_content p {
+    font-size: 14px;
+    color: #344054;
+}
+
+.tags--item_user {
+    display: flex;
+    gap: 8px;
+}
+
+.tags--item_user img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.tags--item_user h6 {
+    font-weight: 700; 
+    color: #2d3748 ;
+    font-size: 13px;      
+}
