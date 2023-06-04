@@ -1,10 +1,11 @@
+import Link from "next/link";
+
 export default function LoginScreen() {
     return (
-        <div className="container w-full h-full  bg-gray-400">
+        <div className="w-full h-screen bg-gray-400">
 
-
-            <div className="flex flex-row justify-center ">
-                <div className="rounded-2xl bg-white" style={{ maxWidth: 500 ,flexGrow:0,flexShrink:0, flexBasis:'50%'}}>
+            <div className="flex h-full flex-row justify-center items-center">
+                <div className="rounded-2xl bg-white" style={{ maxWidth: 500, flexGrow: 0, flexShrink: 0, flexBasis: '50%' }}>
                     <div className="flex flex-row justify-between border-b-[1px] border-b-gray-300 px-6 py-4">
                         <span className="font-semibold text-base">Đăng nhập tài khoản</span>
                         <button className="rounded-full border w-8 h-8 border-gray-500">X</button>
@@ -18,26 +19,38 @@ export default function LoginScreen() {
                         </div>
                         <button className="w-full rounded-xl bg-blue-700 py-2 px-3">
                             <span className="text-white font-bold text-sm">Đăng nhập</span>
-                            </button>
+                        </button>
                         <div className="py-3">Hoặc</div>
-                        <button className="w-full rounded-xl bg-gray-100 border border-gray-400">
-                            Đăng nhập bằng Google
+
+                        <button className="w-full rounded-xl bg-gray-100 border border-gray-400 mb-5" style={{ color: "black", background: "#F9F9FB" }}>
+                            <span className="flex justify-center py-2">
+                                <img src="https://tinhte.vn/styles/tinhte2018/google.png" />
+                                <span className="ml-2">  Đăng nhập bằng Google </span>
+                            </span>
                         </button>
-                        <button className="w-full rounded-xl bg-gray-100 border border-gray-400">
-                            Đăng nhập bằng Facebook
+
+                        <button className="w-full rounded-xl bg-gray-100 border border-gray-400 mb-5" style={{ color: "black", background: "#F9F9FB" }}>
+                            <span className="flex justify-center py-2">
+                                <img src="https://tinhte.vn/styles/tinhte2018/facebook.png" />
+                                <span className="ml-2">  Đăng nhập bằng Facebook </span>
+                            </span>
                         </button>
-                        <button className="w-full rounded-xl bg-gray-100 border border-gray-400">
-                            Đăng nhập bằng Apple
+
+                        <button className="w-full rounded-xl bg-gray-100 border border-gray-400 mb-5" style={{ color: "black", background: "#F9F9FB" }}>
+                            <span className="flex justify-center py-2">
+                                <img src="https://tinhte.vn/styles/tinhte2018/apple.png" />
+                                <span className="ml-2">  Đăng nhập bằng Apple </span>
+                            </span>
                         </button>
-                        <span>Chưa có tài khoản? <span>Đăng kí</span></span>
+
+                        <span>Chưa có tài khoản? <Link href={"/sign_up"}><span style={{ color: "blue" }}>Đăng kí</span></Link>
+                        </span>
 
                     </div>
                 </div>
 
             </div>
-            <div style={{height:1024}}>
-
-            </div>
+           
         </div>
     );
 }
