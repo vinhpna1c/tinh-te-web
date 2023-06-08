@@ -39,6 +39,7 @@ export default function Footer1() {
             <div className='mt-1 mb-3 font-bold text-sm'>
               Nhật Tảo<br />
             </div>
+            {/* Hell */}
             <div className='list-outside'>
               Mua bán điện thoại <br />
               Mua bán máy tính<br />
