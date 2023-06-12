@@ -26,7 +26,7 @@ export default function LoginScreen() {
                         <input className="w-full rounded border border-gray-300 mt-8 px-3 py-2" placeholder="Tên tài khoản hoặc Email" />
                         <input className="w-full rounded border border-gray-300 mt-4 px-3 py-2" placeholder="Mật khẩu" />
                         <div className="flex flex-row w-full justify-end py-3">
-                            <span>Quên mật khẩu?</span>
+                           <Link href="/login/forgot_password"><span style={{color:"blue"}}>Quên mật khẩu?</span></Link> 
                         </div>
                         <button className="w-full rounded-xl bg-blue-700 py-2 px-3">
                             <span className="text-white font-bold text-sm">Đăng nhập</span>
