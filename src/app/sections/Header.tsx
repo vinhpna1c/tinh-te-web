@@ -1,6 +1,6 @@
 import { FaRegUserCircle } from 'react-icons/fa';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { IoMdMenu } from 'react-icons/io';
+import {IoMdMenu} from 'react-icons/io'
 
 export default function Header() {
     return (
