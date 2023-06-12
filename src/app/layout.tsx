@@ -7,6 +7,7 @@ import './globals.css';
 import { Inter } from 'next/font/google'
 import { AppContextProvider } from './context';
 import Footer from './sections/Footer';
+import { AuthContextProvider } from '@/context/AuthContext';
 
 
 // import { AmityUiKitProvider, AmityUiKitSocial } from "@amityco/ui-kit-open-source";
@@ -32,10 +33,13 @@ function RootLayout({
       <head>
         <meta name='metadata' />
       </head>
-      <body className={inter.className}>{children}
-      <Footer/>
+      <body className={inter.className}>
+        <AuthContextProvider>
+          {children}
+        </AuthContextProvider>
+        <Footer />
       </body>
-      
+
     </html>
   )
 }
