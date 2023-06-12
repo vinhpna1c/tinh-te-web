@@ -1,4 +1,4 @@
-"use client";
+'use client'
 import Image from 'next/image'
 
 import Header from './sections/Header'
@@ -16,13 +16,39 @@ import NavBar from './sections/NavBar'
 import ThreadColumn from './components/ThreadColumn'
 import { useEffect } from 'react'
 import AmityAuth from '../services/amity.auth.service'
+import { initFirebase } from '../services/firebase.service';
+import { use } from 'react'
+import { useRouter } from 'next/navigation';
+import { Client } from '@amityco/ts-sdk';
+
+// export const getStaticProps: GetStaticProps<{
+//   repo: Repo;
+// }> = async () => {
+//   const res = await fetch('https://api.github.com/repos/vercel/next.js');
+//   const repo = await res.json();
+//   return { props: { repo } };
+// };
 
 export default function Home() {
-  useEffect(()=>{
-    AmityAuth.init().then((_)=>{
-      console.info("Init service");
-    });
-  },[])
+ 
+
+  try {
+    console.log("Login page");
+    const client = Client.getActiveClient();
+    console.log(client);
+
+  } catch (error) {
+    console.log("Error get client from amity")
+    // const amityUser = JSON.parse(window.sessionStorage.getItem('AMITY_USER') ?? '{}')
+   
+
+    // console.log(error)
+  }
+
+  const firebaseApp = initFirebase();
+  console.log(firebaseApp);
+  // const router = useRouter();
+
   return (
     <div>
 
@@ -120,7 +146,18 @@ export default function Home() {
                 <CommunityItem />
                 <CommunityItem />
                 <CommunityItem />
-                <button className='col-span-2 rounded-sm bg-gray-400 w-full px-4 py-2 text-sm font-normal'>Xem tất cả (84)</button>
+                <div className='col-span-2'>
+
+                  <button
+                    className='rounded-sm bg-gray-400 w-full px-4 py-2 text-sm font-normal'
+                    onClick={() => {
+                      // router.push('/community');
+                    }}
+                  >Xem tất cả (84)</button>
+
+                </div>
+
+
               </div>
             </div>
 

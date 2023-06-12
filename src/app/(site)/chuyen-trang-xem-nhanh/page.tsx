@@ -13,16 +13,11 @@ export default function AllQuickPost(){
         <div>
             <h1>Chuyên trang xem nhanh</h1>
             <button className="border border-gray-900" onClick={()=>{
-                AmityAuth.login("99").then((value)=>{
-                    const isSigned=Client.isConnected();
-                    console.info(isSigned)
-                    setIsSignedIn(isSigned)
-                    FeedRepository.queryGlobalFeed().then((value)=>{
+         
+                FeedRepository.queryGlobalFeed().then((value)=>{
 
-                        console.log("Post: "+value.data);
-                    })
-                });
-                
+                    console.log("Post: "+value.data);
+                })
             }}>{isSignedIn? "Signed in":'Sign in Amity'}</button>
         </div>
     )

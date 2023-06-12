@@ -1,6 +1,17 @@
+import { Client } from "@amityco/ts-sdk";
 import Link from "next/link";
 
 export default function LoginScreen() {
+    
+    try {
+        console.log("Login page");
+        const client=Client.getActiveClient(); 
+        console.log(client);   
+    } catch (error) {
+        console.log("Error get client from amity")
+        console.log(error)
+    }
+    
     return (
         <div className="w-full h-screen bg-gray-400">
 

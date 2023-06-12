@@ -1,0 +1,6 @@
+[submodule "ui-kit"]
+	path = ui-kit
+	url = https://github.com/AmityCo/Amity-Social-Cloud-UIKit-Web-OpenSource
+[submodule "src/ui-kit"]
+	path = src/ui-kit
+	url = https://github.com/AmityCo/Amity-Social-Cloud-UIKit-Web-OpenSource
