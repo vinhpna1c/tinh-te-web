@@ -9,8 +9,8 @@ import { AppSessionContext } from '../context';
 
 
 export default function Header() {
-    const context= useContext(AppSessionContext);
-    const {amityClient} =context;
+    // const context= useContext(AppSessionContext);
+    // const {amityClient} =context;
     
 
     return (
