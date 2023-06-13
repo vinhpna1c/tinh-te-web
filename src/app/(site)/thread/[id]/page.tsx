@@ -1,6 +1,44 @@
 import { useRouter } from "next/router"
 import "./styles.css"
 
+const mockData = [
+    {
+        imgURL: "https://photo2.tinhte.vn/data/avatars/m/2389/2389485.jpg?1513472040",
+        username: "_Vito_",
+        title: "Đại bàng",
+        createdat: "Một giờ",
+        content: "Bên Mac render 3D bằng phần mềm gì nhỉ? Chứ hiệu năng render blender của m1 max 64 core chỉ bằng 20% 3080 thôi mà."
+    },
+    {
+        imgURL: "https://tinhte.vn/styles/default/TinhteMods/avatars/avatar_4.png",
+        username: "tinhdg",
+        title: "Cao cấp",
+        createdat: "Một giờ",
+        content: "Ai đang dùng window với Intel thì cứ nên dùng tiếp đi, chuyển sang Mac nó nhanh chóng mặt lại a sê nôl"
+    },
+    {
+        imgURL: "https://photo2.tinhte.vn/data/avatars/m/92/92078.jpg?1510237757",
+        username: "phu_nguyen29",
+        title: "Tích cực",
+        createdat: "Một giờ",
+        content: "Còn iMac mới của tui đâu"
+    },
+    {
+        imgURL: "https://photo2.tinhte.vn/data/avatars/m/2874/2874823.jpg?1637570972",
+        username: "nvk_nk",
+        title: "Cao cấp",
+        createdat: "13 giờ",
+        content: "Hóng IMAC"
+    },
+    {
+        imgURL: "https://tinhte.vn/styles/default/TinhteMods/avatars/avatar_male_5.png",
+        username: "Tikktok",
+        title: "Trứng",
+        createdat: "20 giờ",
+        content: "Ước gì công việc có thể sử dụng mac, thiết kế nhìn đẹp"
+    }
+]
+
 const ThreadDetails = () => {
     console.log(useRouter().query.id);
     return (
@@ -56,65 +94,21 @@ const ThreadDetails = () => {
                             <h6>Đăng nhập 1 phát, tha hồ bình luận (^ 3^)</h6>
                         </div>
 
-                        <div className="thread--detail__comment">
-                            <img src="https://photo2.tinhte.vn/data/avatars/m/2389/2389485.jpg?1513472040" alt="" />
-                            <div className="thread--detail__cmt">
-                                <div className="thread--detail__cmtor">
-                                    <h6 style={{color: "rgb(7,126,237)"}}>_Vito_</h6>
-                                    <h6 style={{color: "rgb(245,166,69)"}}>Đại bàng</h6>
-                                    <h6 style={{color: "rgb(143,179,214)"}}>Một giờ</h6>
+                        {mockData.map((item, index) => {
+                            return (
+                                <div className="thread--detail__comment">
+                                    <img src={item.imgURL} alt="" />
+                                    <div className="thread--detail__cmt">
+                                        <div className="thread--detail__cmtor">
+                                            <h6 style={{ color: "rgb(7,126,237)" }}>{item.username}</h6>
+                                            <h6 style={{ color: "rgb(245,166,69)" }}>{item.title}</h6>
+                                            <h6 style={{ color: "rgb(143,179,214)" }}>{item.createdat}</h6>
+                                        </div>
+                                        <p>{item.content}</p>
+                                    </div>
                                 </div>
-                                <p>Bên Mac render 3D bằng phần mềm gì nhỉ? Chứ hiệu năng render blender của m1 max 64 core chỉ bằng 20% 3080 thôi mà.</p>
-                            </div>
-                        </div>
-
-                        <div className="thread--detail__comment">
-                            <img src="https://tinhte.vn/styles/default/TinhteMods/avatars/avatar_4.png" alt="" />
-                            <div className="thread--detail__cmt">
-                                <div className="thread--detail__cmtor">
-                                    <h6 style={{color: "rgb(7,126,237)"}}>tinhdg</h6>
-                                    <h6 style={{color: "rgb(245,166,69)"}}>Cao cấp</h6>
-                                    <h6 style={{color: "rgb(143,179,214)"}}>Một giờ</h6>
-                                </div>
-                                <p>Ai đang dùng window với Intel thì cứ nên dùng tiếp đi, chuyển sang Mac nó nhanh chóng mặt lại a sê nôl</p>
-                            </div>
-                        </div>
-
-                        <div className="thread--detail__comment">
-                            <img src="https://photo2.tinhte.vn/data/avatars/m/92/92078.jpg?1510237757" alt="" />
-                            <div className="thread--detail__cmt">
-                                <div className="thread--detail__cmtor">
-                                    <h6 style={{color: "rgb(7,126,237)"}}>phu_nguyen29</h6>
-                                    <h6 style={{color: "rgb(245,166,69)"}}>Tích cực</h6>
-                                    <h6 style={{color: "rgb(143,179,214)"}}>Một giờ</h6>
-                                </div>
-                                <p>Còn iMac mới của tui đâu</p>
-                            </div>
-                        </div>
-
-                        <div className="thread--detail__comment">
-                            <img src="https://photo2.tinhte.vn/data/avatars/m/2874/2874823.jpg?1637570972" alt="" />
-                            <div className="thread--detail__cmt">
-                                <div className="thread--detail__cmtor">
-                                    <h6 style={{color: "rgb(7,126,237)"}}>nva_nk</h6>
-                                    <h6 style={{color: "rgb(245,166,69)"}}>Cao cấp</h6>
-                                    <h6 style={{color: "rgb(143,179,214)"}}>13 giờ</h6>
-                                </div>
-                                <p>Hóng IMAC</p>
-                            </div>
-                        </div>
-
-                        <div className="thread--detail__comment">
-                            <img src="https://tinhte.vn/styles/default/TinhteMods/avatars/avatar_male_5.png" alt="" />
-                            <div className="thread--detail__cmt">
-                                <div className="thread--detail__cmtor">
-                                    <h6 style={{color: "rgb(7,126,237)"}}>Tikktok</h6>
-                                    <h6 style={{color: "rgb(245,166,69)"}}>Trứng</h6>
-                                    <h6 style={{color: "rgb(143,179,214)"}}>20 giờ</h6>
-                                </div>
-                                <p>Ước gì công việc có thể sử dụng mac, thiết kế nhìn đẹp</p>
-                            </div>
-                        </div>
+                            )
+                        })}
                     </div>
                 </div>
                 <div className="thread--detail__2">
