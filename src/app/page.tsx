@@ -20,6 +20,7 @@ import { initFirebase } from '../services/firebase.service';
 import { use } from 'react'
 import { useRouter } from 'next/navigation';
 import { Client } from '@amityco/ts-sdk';
+import Link from 'next/link'
 
 // export const getStaticProps: GetStaticProps<{
 //   repo: Repo;
@@ -318,7 +319,12 @@ export default function Home() {
       <div className='container mx-auto px-4'>
         <div className='flex flex-row overflow-x-auto'>
           <TagItem selected={true}>Home</TagItem>
-          {tags.map((tag, index) => (<TagItem key={index}>{tag}</TagItem>))}
+          {tags.map((tag, index) => {
+            return (
+              <TagItem key={index}>{tag}</TagItem>
+            )
+          }
+          )}
         </div>
         <div className='my-4'>
           <div className='flex flex-row justify-between items-center'>
@@ -329,7 +335,14 @@ export default function Home() {
           </div>
           <div className='flex flex-row overflow-x-scroll'>
             {
-              tempDataReel.map((item, index) => (<ReelItem key={index} imgURL={item.imgURL} />))
+              tempDataReel.map((item, index) => {
+                return (
+                  <Link href="/thread/1">
+                    <ReelItem key={index} imgURL={item.imgURL} />
+                  </Link>
+                )
+              }
+              )
             }
           </div>
         </div>
@@ -337,6 +350,7 @@ export default function Home() {
           <div className='col-span-3 lg:col-span-2'>
             <div className='grid grid-cols-3'>
               <div className='col-span-2'>
+<<<<<<< HEAD
                 <TopPostItem topContent={true}
                   postImageURL='https://photo2.tinhte.vn/data/attachment-files/2023/06/6462418_cover-cuu-giam-doc-Samsung-danh-cap-cong-nghe-1.jpg'
                   title='Cựu giám đốc Samsung bị cáo buộc đánh cắp công nghệ để mở nhà máy sản xuất chip tại Trung Quốc'
@@ -351,11 +365,33 @@ export default function Home() {
                   author='Thuan Le Van'
                   content='Sony đã đưa Spider-Man lên đỉnh xã hội siêu anh hùng.Cụ thể, thương hiệu Spider-Man trở thành siêu anh hùng được tìm kiếm nhiều nhất với hơn 11 triệu lượt. Có tới 48/50 tiểu bang nước Mỹ thu về câu trả lời Spider-Man là siêu anh hùng được yêu mến nhất. Trong nhóm siêu anh.'
                 />
+=======
+                <Link href="/thread/1">
+                  <TopPostItem topContent={true}
+                    postImageURL='https://photo2.tinhte.vn/data/attachment-files/2023/02/6342203_tinhte_cover_peng_deeptalk.jpg'
+                    title='Những điều thú vị về chim cánh cụt'
+                    author='Ng Minh Hằng'
+                    content='Lúc còn bé, ước mơ của mình là được một lần chạm tay vào cái bụng tròn tròn ú ú của những bạn cánh cụt, và tới nay thì điều đó vẫn chưa thực hiện được. Tuy nhiên, vì sở thích đó nên mình đã gom góp được một số kiến thức thú vị về loài chim “không biết bay” cực kỳ đáng yêu này.'
+                  />
+                </Link>
+              </div>
+              <div className='col-span-1'>
+                <Link href="/thread/1">
+                  <TopPostItem displayContent={true}
+                    postImageURL='https://photo2.tinhte.vn/data/attachment-files/2023/02/6342203_tinhte_cover_peng_deeptalk.jpg'
+                    title='Những điều thú vị về chim cánh cụt'
+                    author='Ng Minh Hằng'
+                    content='Lúc còn bé, ước mơ của mình là được một lần chạm tay vào cái bụng tròn tròn ú ú của những bạn cánh cụt, và tới nay thì điều đó vẫn chưa thực hiện được. Tuy nhiên, vì sở thích đó nên mình đã gom góp được một số kiến thức thú vị về loài chim “không biết bay” cực kỳ đáng yêu này.'
+                  />
+                </Link>
+>>>>>>> 00b4bc374efa584a910478656e1cadb6984ce1e2
               </div>
               {
                 tempDataTopPost.map((item, index) => {
                   return (
-                    <TopPostItem key={index} postImageURL={item.postImageURL} title={item.title} author={item.author} content={item.content} />
+                    <Link href="/thread/1">
+                      <TopPostItem key={index} postImageURL={item.postImageURL} title={item.title} author={item.author} content={item.content} />
+                    </Link>
                   )
                 })
               }
@@ -373,7 +409,9 @@ export default function Home() {
               {
                 tempDataQuickPost.map((item, index) => {
                   return (
-                    <QuickPostItem title={item.title} imgURL={item.imgUrl} />
+                    <Link href="/thread/1">
+                      <QuickPostItem title={item.title} imgURL={item.imgUrl} />
+                    </Link>
                   )
                 })
               }
@@ -386,7 +424,9 @@ export default function Home() {
               {
                 tempDataOutstandingPost.map((item, index) => {
                   return (
-                    <OutStandingPost rank={item.rank} title={item.title} author={item.author} />
+                    <Link href="/thread/1">
+                      <OutStandingPost rank={item.rank} title={item.title} author={item.author} />
+                    </Link>
                   )
                 })
               }
@@ -402,7 +442,9 @@ export default function Home() {
                 {
                   tempDataComputexItem.map((item, index) => {
                     return (
-                      <ComputexItem key={index} imgURL={item.imgURL} title={item.title} />
+                      <Link href="/thread/1">
+                        <ComputexItem key={index} imgURL={item.imgURL} title={item.title} />
+                      </Link>
                     )
                   }
                   )
@@ -414,7 +456,9 @@ export default function Home() {
             <div className='mt-6'>
               {tempDataThreadItem.map((item, index) => {
                 return (
-                  <ThreadItem imgURL={item.imgURL} title={item.title} content={item.content} author={item.author} />
+                  <Link href="/thread/1">
+                    <ThreadItem imgURL={item.imgURL} title={item.title} content={item.content} author={item.author} />
+                  </Link>
                 )
               })}
             </div>
@@ -430,7 +474,9 @@ export default function Home() {
                 {
                   tempDataCommunityItem.map((item, index) => {
                     return (
-                      <CommunityItem imgURL={item.imgURL} badge={item.badge} itemnumber={item.itemnumber} />
+                      <Link href="/thread/1">
+                        <CommunityItem imgURL={item.imgURL} badge={item.badge} itemnumber={item.itemnumber} />
+                      </Link>
                     )
                   })
                 }
@@ -501,7 +547,9 @@ export default function Home() {
                 {
                   tempDataQuickPost.map((item, index) => {
                     return (
-                      <QuickPostItem title={item.title} imgURL={item.imgUrl} />
+                      <Link href="/thread/1">
+                        <QuickPostItem title={item.title} imgURL={item.imgUrl} />
+                      </Link>
                     )
                   })
                 }
