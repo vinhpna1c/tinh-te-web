@@ -20,6 +20,7 @@ import { initFirebase } from '../services/firebase.service';
 import { use } from 'react'
 import { useRouter } from 'next/navigation';
 import { Client } from '@amityco/ts-sdk';
+import { useAuth } from '@/context/AuthContext'
 
 // export const getStaticProps: GetStaticProps<{
 //   repo: Repo;
@@ -48,6 +49,10 @@ export default function Home() {
   const firebaseApp = initFirebase();
   console.log(firebaseApp);
   // const router = useRouter();
+
+
+  const {user} =useAuth()
+  console.log("Cureen user: "+user)
 
   return (
     <div>

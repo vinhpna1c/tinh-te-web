@@ -3,7 +3,9 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '@/src/services/firebase.service';
 import { Elsie_Swash_Caps } from 'next/font/google';
-const AuthContext = createContext({});
+const AuthContext = createContext({
+    user:null,
+});
 
 export const useAuth = () => useContext(AuthContext)
 

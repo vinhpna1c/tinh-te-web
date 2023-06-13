@@ -1,7 +1,8 @@
+import { useRouter } from "next/router"
 import "./styles.css"
 
 const ThreadDetails = () => {
-
+    console.log(useRouter().query.id);
     return (
         <div className="main--container">
             <div className="thread--detail">
