@@ -48,7 +48,7 @@ const mockData = [
     }
 ]
 
-const Tags = () => {
+function TagDetail()  {
 
     return (
         <div className="tags--container">
@@ -82,4 +82,4 @@ const Tags = () => {
     )
 }
 
-export default Tags
+export default TagDetail

@@ -1,4 +1,5 @@
-import { useRouter } from "next/router"
+// 'use client'
+// import { useRouter } from "next/navigation"
 import "./styles.css"
 
 const mockData = [
@@ -39,8 +40,9 @@ const mockData = [
     }
 ]
 
-const ThreadDetails = () => {
-    console.log(useRouter().query.id);
+function ThreadDetail() {
+    // const router =useRouter();
+    // console.log(router..id);
     return (
         <div className="main--container">
             <div className="thread--detail">
@@ -159,4 +161,4 @@ const ThreadDetails = () => {
     )
 }
 
-export default ThreadDetails
+export default ThreadDetail;

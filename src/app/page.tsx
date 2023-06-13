@@ -313,8 +313,8 @@ export default function Home() {
   // const router = useRouter();
 
 
-  const {user} =useAuth()
-  console.log("Cureen user: "+user)
+  // const {user} =useAuth()
+  // console.log("Cureen user: "+user)
 
   return (
     <div>
@@ -397,7 +397,7 @@ export default function Home() {
               {
                 tempDataQuickPost.map((item, index) => {
                   return (
-                    <Link href="/thread/1">
+                    <Link key={index} href="/thread/1">
                       <QuickPostItem title={item.title} imgURL={item.imgUrl} />
                     </Link>
                   )
@@ -412,7 +412,7 @@ export default function Home() {
               {
                 tempDataOutstandingPost.map((item, index) => {
                   return (
-                    <Link href="/thread/1">
+                    <Link key={index} href="/thread/1">
                       <OutStandingPost rank={item.rank} title={item.title} author={item.author} />
                     </Link>
                   )
@@ -430,7 +430,7 @@ export default function Home() {
                 {
                   tempDataComputexItem.map((item, index) => {
                     return (
-                      <Link href="/thread/1">
+                      <Link key={index} href="/thread/1">
                         <ComputexItem key={index} imgURL={item.imgURL} title={item.title} />
                       </Link>
                     )
@@ -444,7 +444,7 @@ export default function Home() {
             <div className='mt-6'>
               {tempDataThreadItem.map((item, index) => {
                 return (
-                  <Link href="/thread/1">
+                  <Link key={index} href="/thread/1">
                     <ThreadItem imgURL={item.imgURL} title={item.title} content={item.content} author={item.author} />
                   </Link>
                 )
@@ -462,7 +462,7 @@ export default function Home() {
                 {
                   tempDataCommunityItem.map((item, index) => {
                     return (
-                      <Link href="/thread/1">
+                      <Link key={index} href="/thread/1">
                         <CommunityItem imgURL={item.imgURL} badge={item.badge} itemnumber={item.itemnumber} />
                       </Link>
                     )
@@ -535,7 +535,7 @@ export default function Home() {
                 {
                   tempDataQuickPost.map((item, index) => {
                     return (
-                      <Link href="/thread/1">
+                      <Link key={index} href="/thread/1">
                         <QuickPostItem title={item.title} imgURL={item.imgUrl} />
                       </Link>
                     )
