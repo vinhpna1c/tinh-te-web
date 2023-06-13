@@ -1,10 +1,14 @@
+
 import styles from '../home.module.scss';
 function ThreadItem(props: any) {
     const {imgURL, title, content, author} = props
 
     return (
-        <div className='flex flex-row mt-4'>
-            <img className='rounded-xl w-[240px] mr-4 object-cover' src={imgURL} />
+        <div className='flex justify-start mt-4'>
+            <div className='w-[240px] mr-4 max-h-40 flex-shrink-0'>
+            <img className='rounded-xl object-contain w-full overflow-hidden' src={imgURL} />
+            </div>
+           
             <div >
                 <h3 className={styles['post_title']}>{title}</h3>
                 <p className={`${styles['post_content']} h-[60px] mt-1`}>

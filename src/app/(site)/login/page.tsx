@@ -3,7 +3,7 @@ import { useAuth } from "@/context/AuthContext";
 import { auth } from "@/src/services/firebase.service";
 import { Client } from "@amityco/ts-sdk";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { type } from "os";
 import { useState } from "react";
 import { useCreateUserWithEmailAndPassword, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
