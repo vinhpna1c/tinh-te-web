@@ -5,6 +5,8 @@ import { AiFillEdit } from 'react-icons/ai'
 import Link from 'next/link'
 import Header from '../sections/Header'
 import NavBar from '../sections/NavBar'
+import UserHeader from './sections/Header'
+import UserNavbar from './sections/NavBar'
 
 export default function Profile() {
   return (
@@ -12,76 +14,11 @@ export default function Profile() {
       <Header />
       <div className='flex flex-col items-center max-w-full'>
         {/*-----------start head-----------*/}
-        <div className='flex justify-center w-full bg-gradient-to-r from-gray-200 via-cyan-300 to-blue-400'>
-          <div className="h-auto w-4/5 flex flex-col flex-wrap justify-center items-center mt-7 mb-7">
-            <div className="">
-              <img className='rounded-full' style={{ width: '112px', height: '112px' }}
-                src="https://demos.creative-tim.com/notus-js/assets/img/team-2-800x800.jpg" />
-            </div>
-            <div className='font-semibold'>
-              Le Thuan
-            </div>
-            <div className='flex flex-row gap-10'>
-              <div className='flex flex-row gap-2'>
-                <h1 className='font-light text-slate-700'>Cấp thành viên:</h1>
-                <div className='flex gap-'>
-                  <img className='w-4 h-5 mr-1' src="https://tinhte.vn/styles/default/TinhteMods/ranks/rank_active_9999@2x.png" alt="" />
-                  <h2 className='font-medium text-slate-800'>Trứng</h2>
-
-                </div>
-              </div>
-              <div className='flex flex-row gap-2'>
-                <h1 className='font-light text-slate-700'>Tuổi 1C:</h1>
-                <div className='font-medium text-slate-800'>
-                  <h2>4h</h2>
-                </div>
-              </div>
-            </div>
-            <div className='flex flex-row gap-10'>
-              <div className='flex flex-row gap-2'>
-                <h1 className='font-light text-slate-700'>Bài đã đăng:</h1>
-                <div className='font-medium text-slate-800'>
-                  <h2>4</h2>
-                </div>
-              </div>
-              <div className='flex flex-row gap-2'>
-                <h1 className='font-light text-slate-700'>Lượt Like:</h1>
-                <div className='font-medium text-slate-800'>
-                  <h2>2</h2>
-                </div>
-              </div>
-              <div className='flex flex-row gap-2'>
-                <h1 className='font-light text-slate-700'>Lượt theo dõi:</h1>
-                <div className='font-medium text-slate-800'>
-                  <h2>0</h2>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <UserHeader />
         {/*------------end head-------------*/}
+
         {/* start menu */}
-        <div className='h-10 w-3/4 flex flex-wrap justify-between font-medium mt-4 mb-4 border-b border-b-gray-400'>
-          <div className='flex flex-row gap-10'>
-            <div>
-              <Link href='/'>Tường nhà</Link>
-            </div>
-            <div>
-              <Link href='/'>Album và ảnh</Link>
-            </div>
-            <div>
-              <Link href='/'>Thông tin cá nhân</Link>
-            </div>
-          </div>
-          <div>
-            <div className='w-48 bg-blue-100 text-blue-600 rounded-2xl drop-shadow-xl hover:bg-blue-200'>
-              <span className='flex'>
-                <Link href='/' className='ml-2'>Đăng Bài Viết Ngay</Link><br />
-                <AiFillEdit size={22} />
-              </span>
-            </div>
-          </div>
-        </div>
+        <UserNavbar />
         {/* end menu */}
         <div className='flex max-h-auto mb-9 w-3/4 justify-start'>
           <div className='w-auto h-auto align-middle font-extrabold uppercase '>thông tin cá nhân</div>
@@ -158,7 +95,7 @@ export default function Profile() {
         </div>
         {/* end information user */}
       </div>
-      <NavBar/>
+      <NavBar />
     </div>
   )
 }
