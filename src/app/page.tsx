@@ -36,20 +36,6 @@ import { tempDataComputexItem, tempDataOutstandingPost, tempDataQuickPost, tempD
 
 export default function Home() {
 
-
-  // try {
-  //   console.log("Login page");
-  //   const client = Client.getActiveClient();
-  //   console.log(client);
-
-  // } catch (error) {
-  //   console.log("Error get client from amity")
-  //   // const amityUser = JSON.parse(window.sessionStorage.getItem('AMITY_USER') ?? '{}')
-
-
-  //   // console.log(error)
-  // }
-
   const firebaseApp = initFirebase();
   console.log(firebaseApp);
   // const router = useRouter();

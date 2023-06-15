@@ -18,19 +18,19 @@ export default function LoginScreen() {
     const router = useRouter();
     const { user } = useAuth();
 
-    useEffect(() => {
-        axios.post('http://103.157.218.115/Tinhte/hs/Social/v1/auth',
-            {
-                //Login with UUID
-                "UUID": "02062001"
-                //Login with Username - Password
-                // "Username": "liemld",
-                // "Password": "21101998"
+    // useEffect(() => {
+    //     axios.post('http://103.157.218.115/Tinhte/hs/Social/v1/auth',
+    //         {
+    //             //Login with UUID
+    //             "UUID": "02062001"
+    //             //Login with Username - Password
+    //             // "Username": "liemld",
+    //             // "Password": "21101998"
 
-            }).then((value)=>{
-                console.info("vALUE GET: "+JSON.stringify(value.data))
-            })
-    }, [])
+    //         }).then((value)=>{
+    //             console.info("vALUE GET: "+JSON.stringify(value.data))
+    //         })
+    // }, [])
     // try {
     //     console.log("Login page");
     //     const client=Client.getActiveClient(); 
@@ -40,7 +40,7 @@ export default function LoginScreen() {
     //     console.log(error)
     // }
 
-    if (user != null) {
+    if (user) {
         router.push("/");
     }
     const [signInForm, setSignInForm] = useState<SignInFormData>({});
