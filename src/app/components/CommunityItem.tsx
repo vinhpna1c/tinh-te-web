@@ -2,7 +2,7 @@
 //     displayTopics?: boolean,
 // }
 
-function CommunityItem(props: {displayTopics?:boolean, imgURL: string, badge: string, itemnumber: string}) {
+function CommunityItem(props: {displayTopics?:boolean, imgURL?: string, badge?: string, itemnumber?: string}) {
     return (
         <div className='flex flex-col items-start px-2 pb-1'>
             <span>

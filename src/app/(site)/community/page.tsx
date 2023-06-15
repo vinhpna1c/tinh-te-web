@@ -37,15 +37,14 @@ export default function CommunityList() {
             <div className="w-full lg:max-w-[1300px] m-4">
                 <span className="text-gray-700 font-bold">Danh sách cộng đồng</span>
                 <div className="flex flex-wrap justify-between items-start">
-                    <CommunityItem  displayTopics={true}/>
-                    <CommunityItem displayTopics={true}/>
-                    <CommunityItem displayTopics={true}/>
-                    <CommunityItem displayTopics={true}/>
-                    <CommunityItem displayTopics={true}/>
-                    <CommunityItem displayTopics={true}/>
-                    <CommunityItem displayTopics={true}/>
-                    <CommunityItem displayTopics={true}/>
-                    <CommunityItem displayTopics={true}/>
+                    <CommunityItem  displayTopics/>
+                    <CommunityItem displayTopics/>
+                    <CommunityItem displayTopics/>
+                    <CommunityItem displayTopics/>
+                    <CommunityItem displayTopics/>
+                    <CommunityItem displayTopics/>
+                    <CommunityItem displayTopics/>
+
                 </div>
             </div>
 
