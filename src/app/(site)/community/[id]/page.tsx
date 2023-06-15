@@ -1,12 +1,13 @@
 'use client'
 import CommunityItem from "@/src/app/components/CommunityItem";
-import { tempDataCommunityItem } from "@/src/app/page";
+
 import Header from "@/src/app/sections/Header";
 import Link from "next/link";
 import { FiEdit } from 'react-icons/fi';
 import { BiCalendarEdit, BiLink } from 'react-icons/bi';
 import { BsPersonFillCheck, BsImage } from 'react-icons/bs';
 import PostItem from "../components/PostItem";
+import { tempDataCommunityItem } from "@/src/utils/mockdata/community";
 
 
 function CommunityInformationSection() {
