@@ -2,10 +2,11 @@
 import { useAuth } from "@/context/AuthContext";
 import { auth } from "@/src/services/firebase.service";
 import { Client } from "@amityco/ts-sdk";
+import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { type } from "os";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCreateUserWithEmailAndPassword, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
 type SignInFormData = {
@@ -14,8 +15,22 @@ type SignInFormData = {
 }
 
 export default function LoginScreen() {
-    const router=useRouter();
-    const {user}= useAuth();
+    const router = useRouter();
+    const { user } = useAuth();
+
+    useEffect(() => {
+        axios.post('http://103.157.218.115/Tinhte/hs/Social/v1/auth',
+            {
+                //Login with UUID
+                "UUID": "02062001"
+                //Login with Username - Password
+                // "Username": "liemld",
+                // "Password": "21101998"
+
+            }).then((value)=>{
+                console.info("vALUE GET: "+JSON.stringify(value.data))
+            })
+    }, [])
     // try {
     //     console.log("Login page");
     //     const client=Client.getActiveClient(); 
@@ -25,7 +40,7 @@ export default function LoginScreen() {
     //     console.log(error)
     // }
 
-    if(user!=null){
+    if (user != null) {
         router.push("/");
     }
     const [signInForm, setSignInForm] = useState<SignInFormData>({});
@@ -36,30 +51,31 @@ export default function LoginScreen() {
             console.log("Update sign in information")
 
             return ({
-            ...prev,
-            [event.target.name]: event.target.value,
-        })}
+                ...prev,
+                [event.target.name]: event.target.value,
+            })
+        }
         )
     }
 
-    
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         console.log(`Sign in with data: ${JSON.stringify(signInForm)}`)
-        signInWithEmailAndPassword(signInForm.email ?? '', signInForm.password ?? '').then((result)=>{
-            if(result){
-                console.log("User get: "+JSON.stringify(result))
+        signInWithEmailAndPassword(signInForm.email ?? '', signInForm.password ?? '').then((result) => {
+            if (result) {
+                console.log("User get: " + JSON.stringify(result))
             }
         })
     }
 
-    const submitForm=()=>{
+    const submitForm = () => {
         console.log(`Sign in with data: ${JSON.stringify(signInForm)}`)
-        signInWithEmailAndPassword(signInForm.email ?? '', signInForm.password ?? '').then((result)=>{
-            if(result){
-                console.log("User get: "+JSON.stringify(result))
+        signInWithEmailAndPassword(signInForm.email ?? '', signInForm.password ?? '').then((result) => {
+            if (result) {
+                console.log("User get: " + JSON.stringify(result))
                 router.push("/");
-            }else{
+            } else {
 
             }
         })
@@ -96,7 +112,7 @@ export default function LoginScreen() {
                             <div className="flex flex-row w-full justify-end py-3">
                                 <Link href="/login/forgot_password"><span style={{ color: "blue" }}>Quên mật khẩu?</span></Link>
                             </div>
-                            <button type="submit" className="w-full rounded-xl bg-blue-700 py-2 px-3" onClick={(e)=>{
+                            <button type="submit" className="w-full rounded-xl bg-blue-700 py-2 px-3" onClick={(e) => {
                                 e.preventDefault();
                                 console.log("submit")
                                 submitForm();
