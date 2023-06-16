@@ -52,7 +52,7 @@ export default function LoginScreen() {
     const submitForm = () => {
         console.log(`Sign in with data: ${JSON.stringify(signInForm)}`)
         signInWithCredentials(signInForm.email ?? '', signInForm.password ?? '').then((result) => {
-            if (result != SignInStatus.SUCCESS) {
+            if (result !== SignInStatus.SUCCESS) {
                 setSignInMsg('Tài khoản đăng nhập không đúng!');
             } else {
                 router.push("/");
