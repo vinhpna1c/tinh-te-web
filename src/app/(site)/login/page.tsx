@@ -1,13 +1,16 @@
 'use client'
 import { useAuth } from "@/context/AuthContext";
+import { SignInStatus, signInWithCredentials } from "@/src/services/auth.service";
 import { auth } from "@/src/services/firebase.service";
 import { Client } from "@amityco/ts-sdk";
 import axios from "axios";
+import { signInWithCredential } from "firebase/auth";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { type } from "os";
 import { useState, useEffect } from "react";
 import { useCreateUserWithEmailAndPassword, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { setInterval } from "timers/promises";
 
 type SignInFormData = {
     email?: string,
@@ -18,28 +21,16 @@ export default function LoginScreen() {
     const router = useRouter();
     const { user } = useAuth();
 
-    // useEffect(() => {
-    //     axios.post('http://103.157.218.115/Tinhte/hs/Social/v1/auth',
-    //         {
-    //             //Login with UUID
-    //             "UUID": "02062001"
-    //             //Login with Username - Password
-    //             // "Username": "liemld",
-    //             // "Password": "21101998"
+    const [signInMsg, setSignInMsg] = useState('');
+    useEffect(() => {
 
-    //         }).then((value)=>{
-    //             console.info("vALUE GET: "+JSON.stringify(value.data))
-    //         })
-    // }, [])
-    // try {
-    //     console.log("Login page");
-    //     const client=Client.getActiveClient(); 
-    //     console.log(client);   
-    // } catch (error) {
-    //     console.log("Error get client from amity")
-    //     console.log(error)
-    // }
-
+        console.info("Message change")
+        if (signInMsg.length != 0) {
+            setTimeout(() => {
+                setSignInMsg('');
+            }, 1000)
+        }
+    }, [signInMsg])
     if (user) {
         router.push("/");
     }
@@ -58,25 +49,13 @@ export default function LoginScreen() {
         )
     }
 
-
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        console.log(`Sign in with data: ${JSON.stringify(signInForm)}`)
-        signInWithEmailAndPassword(signInForm.email ?? '', signInForm.password ?? '').then((result) => {
-            if (result) {
-                console.log("User get: " + JSON.stringify(result))
-            }
-        })
-    }
-
     const submitForm = () => {
         console.log(`Sign in with data: ${JSON.stringify(signInForm)}`)
-        signInWithEmailAndPassword(signInForm.email ?? '', signInForm.password ?? '').then((result) => {
-            if (result) {
-                console.log("User get: " + JSON.stringify(result))
-                router.push("/");
+        signInWithCredentials(signInForm.email ?? '', signInForm.password ?? '').then((result) => {
+            if (result != SignInStatus.SUCCESS) {
+                setSignInMsg('Tài khoản đăng nhập không đúng!');
             } else {
-
+                router.push("/");
             }
         })
     }
@@ -109,6 +88,7 @@ export default function LoginScreen() {
                                 type="password"
                                 onChange={handleChange}
                             />
+                            {signInMsg.length != 0 && <span className="text-red-500 italic text-sm">{signInMsg}</span>}
                             <div className="flex flex-row w-full justify-end py-3">
                                 <Link href="/login/forgot_password"><span style={{ color: "blue" }}>Quên mật khẩu?</span></Link>
                             </div>

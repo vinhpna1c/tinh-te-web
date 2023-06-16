@@ -16,8 +16,9 @@ export default function Header() {
     // const context= useContext(AppSessionContext);
     // const {amityClient} =context;
     
-    const { user } = useAuth();
+    const { user, firebaseUser } = useAuth();
     console.log("current use: " + JSON.stringify(user))
+    console.log("current firebase: " + JSON.stringify(firebaseUser))
     const navigation = useRouter();
 
     const logOut=()=>{
