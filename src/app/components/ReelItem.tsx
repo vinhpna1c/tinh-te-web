@@ -1,4 +1,3 @@
-import { url } from "inspector";
 
 export default function ReelItem(props: any) {
     const { imgURL } = props

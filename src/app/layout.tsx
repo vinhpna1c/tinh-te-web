@@ -1,5 +1,5 @@
 
-// "use client"
+"use client"
 import dynamic from 'next/dynamic';
 import './globals.css';
 
@@ -8,6 +8,7 @@ import { Inter } from 'next/font/google'
 import { AppContextProvider } from './context';
 import Footer from './sections/Footer';
 import { AuthContextProvider } from '@/context/AuthContext';
+import { ChakraProvider } from '@chakra-ui/react';
 
 
 // import { AmityUiKitProvider, AmityUiKitSocial } from "@amityco/ui-kit-open-source";
@@ -34,9 +35,11 @@ function RootLayout({
         <meta name='metadata' />
       </head>
       <body className={inter.className}>
-        <AuthContextProvider>
-          {children}
-        </AuthContextProvider>
+        <ChakraProvider>
+          <AuthContextProvider>
+            {children}
+          </AuthContextProvider>
+        </ChakraProvider>
         <Footer />
       </body>
 
