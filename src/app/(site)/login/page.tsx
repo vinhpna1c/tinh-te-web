@@ -1,16 +1,9 @@
 'use client'
 import { useAuth } from "@/context/AuthContext";
-import { SignInStatus, signInWithCredentials } from "@/src/services/auth.service";
-import { auth } from "@/src/services/firebase.service";
-import { Client } from "@amityco/ts-sdk";
-import axios from "axios";
-import { signInWithCredential } from "firebase/auth";
+import { SignInStatus, signIn, SignInMethod } from "@/src/services/auth.service";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { type } from "os";
 import { useState, useEffect } from "react";
-import { useCreateUserWithEmailAndPassword, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { setInterval } from "timers/promises";
 
 type SignInFormData = {
     email?: string,
@@ -19,11 +12,14 @@ type SignInFormData = {
 
 export default function LoginScreen() {
     const router = useRouter();
-    const { user } = useAuth();
+    //check and redirect if user exists
+    const { firebaseUser } = useAuth();
+    if (firebaseUser) {
+        router.push("/");
+    }
 
     const [signInMsg, setSignInMsg] = useState('');
     useEffect(() => {
-
         console.info("Message change")
         if (signInMsg.length != 0) {
             setTimeout(() => {
@@ -31,11 +27,8 @@ export default function LoginScreen() {
             }, 1000)
         }
     }, [signInMsg])
-    if (user) {
-        router.push("/");
-    }
+
     const [signInForm, setSignInForm] = useState<SignInFormData>({});
-    const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         event.preventDefault();
         setSignInForm((prev) => {
@@ -51,7 +44,10 @@ export default function LoginScreen() {
 
     const submitForm = () => {
         console.log(`Sign in with data: ${JSON.stringify(signInForm)}`)
-        signInWithCredentials(signInForm.email ?? '', signInForm.password ?? '').then((result) => {
+        signIn(SignInMethod.CREDENTIAL, {
+            email: signInForm.email ?? '',
+            password: signInForm.password ?? '',
+        }).then((result) => {
             if (result !== SignInStatus.SUCCESS) {
                 setSignInMsg('Tài khoản đăng nhập không đúng!');
             } else {
@@ -102,7 +98,8 @@ export default function LoginScreen() {
                         </form>
                         <div className="py-3">Hoặc</div>
 
-                        <button className="w-full rounded-xl bg-gray-100 border border-gray-400 mb-5" style={{ color: "black", background: "#F9F9FB" }}>
+                        <button className="w-full rounded-xl bg-gray-100 border border-gray-400 mb-5" style={{ color: "black", background: "#F9F9FB" }}
+                        onClick={()=>signIn(SignInMethod.GOOGLE)}>
                             <span className="flex justify-center py-2">
                                 <img src="https://tinhte.vn/styles/tinhte2018/google.png" />
                                 <span className="ml-2">  Đăng nhập bằng Google </span>

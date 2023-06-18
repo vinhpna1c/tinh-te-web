@@ -1,12 +1,14 @@
 import { Axios } from "axios";
 
 class HttpService {
-    static axios: Axios | null = null;
+    static axios: Axios | null;
     static baseUrl = "http://103.157.218.115/Tinhte/hs/Social/v1";
-    constructor() {
+    static {
         if (HttpService.axios == null) {
-            HttpService.axios = new Axios();
-            HttpService.axios.defaults.baseURL = HttpService.baseUrl;
+            console.log('Create new axios');
+            
+            const axios = new Axios({baseURL:HttpService.baseUrl});
+            HttpService.axios=axios;
         }
     }
 
@@ -15,8 +17,11 @@ class HttpService {
         return await this.axios?.get(path, { params: params });
     }
     static async post(path: string, options?: { params?: Object, body?: Object }) {
+        console.log("PATH: "+path);
+        console.log("option object: "+JSON.stringify(options))
         const { params, body } = options??{};
-        return await this.axios?.post(path, { params, body });
+        console.log("Body request: "+JSON.stringify(body));
+        return await this.axios?.post(path, JSON.stringify(body??{}),{params} );
     }
 }
 

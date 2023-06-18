@@ -17,9 +17,11 @@ export default function Header() {
     // const context= useContext(AppSessionContext);
     // const {amityClient} =context;
 
-    const { user, firebaseUser } = useAuth();
-    console.log("current use: " + JSON.stringify(user))
-    console.log("current firebase: " + JSON.stringify(firebaseUser))
+    const authContext = useAuth();
+    const {user,firebaseUser}=authContext;
+    
+    console.log("Header - current user : " + JSON.stringify(user))
+    console.log("Header - current firebase: " + JSON.stringify(firebaseUser))
     const navigation = useRouter();
     const {isOpen, onOpen, onClose} = useDisclosure();
 
@@ -49,7 +51,7 @@ export default function Header() {
             </div>
             <>
                 {
-                    user ?
+                    firebaseUser ?
 
                         <div className='flex flex-row items-center justify-end'>
                             <button className='bg-blue-500 rounded-full px-5 py-2 whitespace-nowrap text-white text-base mr-2' onClick={onOpen}>Viết bài chia sẻ</button>
@@ -72,7 +74,7 @@ export default function Header() {
 
                         :
                         <Menu >
-                            <MenuButton backgroundColor={'white'} as={Button}>
+                            <MenuButton _hover={{bg:'white'}} _expanded={{bg:'white'}} backgroundColor={'white'} as={Button}>
                                 <span className="flex flex-row rounded-full items-center px-2 py-1" style={{ backgroundColor: '#E5E6ED', }}            >
                                     <FaRegUserCircle size={32} />
                                     <IoMdMenu className='ml-4' size={24} />
@@ -81,8 +83,8 @@ export default function Header() {
                             </MenuButton>
 
                             <MenuList backgroundColor={'white'} borderRadius={4} boxShadow={'0px 0px 2px 1px #999999'}>
-                                <MenuItem padding={16} onClick={() => navigation.push("/login")} >Đăng nhập tài khoản</MenuItem>
-                                <MenuItem padding={16} onClick={() => navigation.push("/sign_up")}>Đăng ký tài khoản mới</MenuItem>
+                                <MenuItem onClick={() => navigation.push("/login")} >Đăng nhập tài khoản</MenuItem>
+                                <MenuItem onClick={() => navigation.push("/sign_up")}>Đăng ký tài khoản mới</MenuItem>
 
                             </MenuList>
                         </Menu>
