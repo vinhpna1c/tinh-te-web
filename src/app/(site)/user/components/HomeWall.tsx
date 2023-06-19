@@ -1,186 +1,168 @@
-'use client'
-import React from 'react'
-import Link from 'next/link'
-import ReelItem from './components/ReelImtem'
-import PinnedPosts from './components/PinnedPosts'
-import Catalog from './components/CatalogUserItem'
-
-import UserLayout from './container'
-import { useState } from 'react'
-import Tab1 from './tab1'
-import Tab2 from './tab2'
-import Tab3 from './tab3'
+import Link from "next/link"
+import PinnedPosts from "./PinnedPosts"
+import ReelItem from "./ReelImtem"
+import CatalogUserItem from "./CatalogUserItem"
 
 const tempDataReel = [
-  {
-    imgURL: "https://imgproxy7.tinhte.vn/dOLn-d_19yHj5h1G2l8CHV-aURqq6Ygi87Yk8qMYeXA/w:400/plain/https://photo2.tinhte.vn/data/attachment-files/2023/05/6443237_image.jpg",
-  },
-  {
-    imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463094_image.jpg",
-  },
-  {
-    imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463095_AAPL_2023-06-13_11-05-16.jpg",
-  },
-  {
-    imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463085_image.jpg",
-  },
-  {
-    imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463087_b5c500625d466fda76e9657f1f1d1571.jpg",
-  },
-  {
-    imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463080_image.jpg",
-  },
-  {
-    imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463061_image.jpg",
-  },
-  {
-    imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463054_image.jpg",
-  },
-  {
-    imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463048_IMG_0754.jpeg",
-  },
-  {
-    imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463040_Zentalk-thumb-trai-nghiem-tren-asus-tuf-gaming-a-15-2023.jpg",
-  },
-  {
-    imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463033_5355cecaa2b2e8644ac8f8c7ea307434.jpg",
-  },
-  {
-    imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463029_image.jpg",
-  },
-  {
-    imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6462979_apple-music-08_1280x720-800-resize.jpg",
-  },
-  {
-    imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6462990_IMG_5333.jpeg",
-  },
-  {
-    imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6462999_IMG_5334.jpeg",
-  },
-  {
-    imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463010_image.jpg",
-  }
-]
+    {
+      imgURL: "https://imgproxy7.tinhte.vn/dOLn-d_19yHj5h1G2l8CHV-aURqq6Ygi87Yk8qMYeXA/w:400/plain/https://photo2.tinhte.vn/data/attachment-files/2023/05/6443237_image.jpg",
+    },
+    {
+      imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463094_image.jpg",
+    },
+    {
+      imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463095_AAPL_2023-06-13_11-05-16.jpg",
+    },
+    {
+      imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463085_image.jpg",
+    },
+    {
+      imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463087_b5c500625d466fda76e9657f1f1d1571.jpg",
+    },
+    {
+      imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463080_image.jpg",
+    },
+    {
+      imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463061_image.jpg",
+    },
+    {
+      imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463054_image.jpg",
+    },
+    {
+      imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463048_IMG_0754.jpeg",
+    },
+    {
+      imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463040_Zentalk-thumb-trai-nghiem-tren-asus-tuf-gaming-a-15-2023.jpg",
+    },
+    {
+      imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463033_5355cecaa2b2e8644ac8f8c7ea307434.jpg",
+    },
+    {
+      imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463029_image.jpg",
+    },
+    {
+      imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6462979_apple-music-08_1280x720-800-resize.jpg",
+    },
+    {
+      imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6462990_IMG_5333.jpeg",
+    },
+    {
+      imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6462999_IMG_5334.jpeg",
+    },
+    {
+      imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463010_image.jpg",
+    }
+  ]
 const tempDataPinnedPosts = [
-  {
-    imgURL: "https://imgproxy7.tinhte.vn/dOLn-d_19yHj5h1G2l8CHV-aURqq6Ygi87Yk8qMYeXA/w:400/plain/https://photo2.tinhte.vn/data/attachment-files/2023/05/6443237_image.jpg",
-  },
-  {
-    imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463094_image.jpg",
-  },
-  {
-    imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463095_AAPL_2023-06-13_11-05-16.jpg",
-  },
-  {
-    imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463085_image.jpg",
-  },
-  {
-    imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463087_b5c500625d466fda76e9657f1f1d1571.jpg",
-  },
-  {
-    imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463080_image.jpg",
-  },
-  {
-    imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463061_image.jpg",
-  },
-  {
-    imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463054_image.jpg",
-  },
-  {
-    imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463048_IMG_0754.jpeg",
-  },
-  {
-    imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463040_Zentalk-thumb-trai-nghiem-tren-asus-tuf-gaming-a-15-2023.jpg",
-  },
-  {
-    imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463033_5355cecaa2b2e8644ac8f8c7ea307434.jpg",
-  },
-  {
-    imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463029_image.jpg",
-  },
-  {
-    imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6462979_apple-music-08_1280x720-800-resize.jpg",
-  },
-  {
-    imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6462990_IMG_5333.jpeg",
-  },
-  {
-    imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6462999_IMG_5334.jpeg",
-  },
-  {
-    imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463010_image.jpg",
-  }
-]
-const tempDataCatalog = [
-  {
-    title: "Thông tin công nghệ",
-  },
-  {
-    title: "Cà phê tinh tế",
-  },
-  {
-    title: "Khoa học",
-  },
-  {
-    title: "Điện tử tiêu dùng",
-  },
-  {
-    title: "Tư vấn chọn mua máy tính",
-  },
-  {
-    title: "Du lịch",
-  },
-  {
-    title: "Sức khỏe",
-  },
-  {
-    title: "Iphone,Ipad,IOS",
-  },
-  {
-    title: "macOS",
-  },
-  {
-    title: "macOS",
-  },
-  {
-    title: "Thông tin công nghệ",
-  },
-  {
-    title: "Cà phê tinh tế",
-  },
-  {
-    title: "Khoa học",
-  },{
-    title: "Thông tin công nghệ",
-  },
-  {
-    title: "Cà phê tinh tế",
-  },
-  {
-    title: "Khoa học",
-  },
-  {
-    title: "Điện tử tiêu dùng",
-  },
-  {
-    title: "Tư vấn chọn mua máy tính",
-  }
-]
+    {
+      imgURL: "https://imgproxy7.tinhte.vn/dOLn-d_19yHj5h1G2l8CHV-aURqq6Ygi87Yk8qMYeXA/w:400/plain/https://photo2.tinhte.vn/data/attachment-files/2023/05/6443237_image.jpg",
+    },
+    {
+      imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463094_image.jpg",
+    },
+    {
+      imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463095_AAPL_2023-06-13_11-05-16.jpg",
+    },
+    {
+      imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463085_image.jpg",
+    },
+    {
+      imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463087_b5c500625d466fda76e9657f1f1d1571.jpg",
+    },
+    {
+      imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463080_image.jpg",
+    },
+    {
+      imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463061_image.jpg",
+    },
+    {
+      imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463054_image.jpg",
+    },
+    {
+      imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463048_IMG_0754.jpeg",
+    },
+    {
+      imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463040_Zentalk-thumb-trai-nghiem-tren-asus-tuf-gaming-a-15-2023.jpg",
+    },
+    {
+      imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463033_5355cecaa2b2e8644ac8f8c7ea307434.jpg",
+    },
+    {
+      imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463029_image.jpg",
+    },
+    {
+      imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6462979_apple-music-08_1280x720-800-resize.jpg",
+    },
+    {
+      imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6462990_IMG_5333.jpeg",
+    },
+    {
+      imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6462999_IMG_5334.jpeg",
+    },
+    {
+      imgURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6463010_image.jpg",
+    }
+  ]
+  const tempDataCatalog = [
+    {
+      title: "Thông tin công nghệ",
+    },
+    {
+      title: "Cà phê tinh tế",
+    },
+    {
+      title: "Khoa học",
+    },
+    {
+      title: "Điện tử tiêu dùng",
+    },
+    {
+      title: "Tư vấn chọn mua máy tính",
+    },
+    {
+      title: "Du lịch",
+    },
+    {
+      title: "Sức khỏe",
+    },
+    {
+      title: "Iphone,Ipad,IOS",
+    },
+    {
+      title: "macOS",
+    },
+    {
+      title: "macOS",
+    },
+    {
+      title: "Thông tin công nghệ",
+    },
+    {
+      title: "Cà phê tinh tế",
+    },
+    {
+      title: "Khoa học",
+    },{
+      title: "Thông tin công nghệ",
+    },
+    {
+      title: "Cà phê tinh tế",
+    },
+    {
+      title: "Khoa học",
+    },
+    {
+      title: "Điện tử tiêu dùng",
+    },
+    {
+      title: "Tư vấn chọn mua máy tính",
+    }
+  ]
+  
 
-const tabs = [
-  <Tab1 />,
-  <Tab2 />,
-  <Tab3 />
-]
-export default function Profile() {
-  const [selectedTab, setSelectedTab] = useState(0);
-  // setSelectedTab(1)
-  // children = tabs[selectedTab]
-  return (
-    <UserLayout>
-      {selectedTab == 0 && <Tab1 />}
-
-      <div>
+export default function HomeWall (){
+    return (
+        <div>
         <div className='flex flex-col items-center max-w-full'>
           <div className='flex max-h-auto mb-9 w-3/4 justify-start'>
             <div className='w-auto h-auto align-middle font-extrabold uppercase '>Tường nhà bạn</div>
@@ -305,7 +287,7 @@ export default function Profile() {
                     tempDataCatalog.map((item, index) => {
                       return (
                         <Link href="/thread/1">
-                          <Catalog key={index} title={item.title} />
+                          <CatalogUserItem key={index} title={item.title} />
                         </Link>
                       )
                     }
@@ -321,6 +303,5 @@ export default function Profile() {
           {/* end information user */}
         </div>
       </div>
-    </UserLayout >
-  )
+    )
 }

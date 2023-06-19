@@ -6,15 +6,14 @@ class HttpService {
     static {
         if (HttpService.axios == null) {
             console.log('Create new axios');
-            
-            const axios = new Axios({baseURL:HttpService.baseUrl});
+            const axios = new Axios({baseURL:HttpService.baseUrl,transformResponse:(data)=>JSON.parse(data)});
             HttpService.axios=axios;
         }
     }
 
     static async get(path: string, options?: { params?: Object },) {
         const { params } = options ?? {};
-        return await this.axios?.get(path, { params: params });
+        return await this.axios?.get(path, {params});
     }
     static async post(path: string, options?: { params?: Object, body?: Object }) {
         console.log("PATH: "+path);

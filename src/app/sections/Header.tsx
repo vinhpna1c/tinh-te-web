@@ -5,7 +5,7 @@ import { IoMdMenu } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
 import { HiOutlineUserCircle, HiOutlineLockClosed } from 'react-icons/hi';
 import { FiChevronDown } from 'react-icons/fi'
-import { Button, Menu, MenuButton, MenuItem, MenuList, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Select, Stack, useDisclosure } from '@chakra-ui/react';
+import { Button, Menu, MenuButton, MenuItem, MenuList, Modal, useDisclosure } from '@chakra-ui/react';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';

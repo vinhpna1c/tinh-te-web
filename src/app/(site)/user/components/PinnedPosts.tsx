@@ -1,5 +1,5 @@
 
-import styles from '../../home.module.scss'
+import styles from '../../../home.module.scss'
 
 function PinnedPostItem(props: {
     displayContent?: boolean,

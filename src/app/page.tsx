@@ -14,7 +14,7 @@ import ComputexItem from './components/ComputexItem'
 import ThreadItem from './components/ThreadItem'
 import NavBar from './sections/NavBar'
 import ThreadColumn from './components/ThreadColumn'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import AmityAuth from '../services/amity.auth.service'
 import { initFirebase } from '../services/firebase.service';
 import { use } from 'react'
@@ -24,6 +24,8 @@ import { useAuth } from '@/context/AuthContext'
 import Link from 'next/link'
 import { tempDataCommunityItem } from '../utils/mockdata/community'
 import { tempDataComputexItem, tempDataOutstandingPost, tempDataQuickPost, tempDataReel, tempDataThreadItem, tempDataTopPost } from '../utils/mockdata/post'
+import { getTopLatestPost } from '../services/post.service'
+import { Post } from '../models/domain/post'
 
 // export const getStaticProps: GetStaticProps<{
 //   repo: Repo;
@@ -37,16 +39,18 @@ import { tempDataComputexItem, tempDataOutstandingPost, tempDataQuickPost, tempD
 export default function Home() {
 
   const firebaseApp = initFirebase();
-  console.log(firebaseApp);
-  // const router = useRouter();
 
+  const [posts, setPosts] = useState<Post[]>([]);
+  useEffect(() => {
+    getTopLatestPost().then((value) => {
+      console.log("Query result: " + JSON.stringify(value))
+      setPosts(value);
+    })
 
-  // const {user} =useAuth()
-  // console.log("Cureen user: "+user)
+  }, [])
 
   return (
     <div>
-
       <Header />
       <NavBar />
       <div className='container mx-auto px-4'>
@@ -70,8 +74,8 @@ export default function Home() {
             {
               tempDataReel.map((item, index) => {
                 return (
-                  <Link href="/thread/1">
-                    <ReelItem key={index} imgURL={item.imgURL} />
+                  <Link key={index} href="/thread/1">
+                    <ReelItem imgURL={item.imgURL} />
                   </Link>
                 )
               }
@@ -103,10 +107,22 @@ export default function Home() {
                 </Link>
               </div>
               {
-                tempDataTopPost.map((item, index) => {
+                posts.slice(0, 3).map((item, index) => {
+                  const postData = item;
+                  const itemData = {
+                    displayContent: false,
+                    // topContent?: boolean | undefined;
+                    postImageURL: "https://photo2.tinhte.vn/data/attachment-files/2023/06/6462415_Cover-LM.jpg",
+                    title: postData.Title,
+                    author: postData.Code,
+                    content: postData.Content,
+                  };
                   return (
-                    <Link href="/thread/1">
-                      <TopPostItem key={index} postImageURL={item.postImageURL} title={item.title} author={item.author} content={item.content} />
+                    <Link href={{ 
+                      pathname: "/thread/" + item.Code, 
+                      // query:JSON.stringify(item),
+                    }}>
+                      <TopPostItem key={index} postImageURL={itemData.postImageURL} title={itemData.title} author={itemData.author} content={itemData.content} />
                     </Link>
                   )
                 })

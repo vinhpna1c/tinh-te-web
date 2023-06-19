@@ -1,6 +1,9 @@
-// 'use client'
-// import { useRouter } from "next/navigation"
+'use client'
+import { usePathname } from "next/navigation"
 import "./styles.css"
+import { useEffect, useState } from "react";
+import { getPostByID } from "@/src/services/post.service";
+import { Post } from "@/src/models/domain/post";
 
 const mockData = [
     {
@@ -41,8 +44,14 @@ const mockData = [
 ]
 
 function ThreadDetail() {
-    // const router =useRouter();
-    // console.log(router..id);
+    const [post,setPost]=useState<Post|undefined>(undefined)
+    const pathName=usePathname();
+    const paths=pathName.split('/');
+    useEffect(()=>{
+        const postID=paths[paths.length-1];
+        getPostByID(postID).then(post=>setPost(post))
+    },[])
+
     return (
         <div className="main--container">
             <div className="thread--detail">
@@ -59,6 +68,7 @@ function ThreadDetail() {
                     </div>
 
                     <div className="thread--detail__post">
+                        <div dangerouslySetInnerHTML={{__html: post?.Content??''}} />
                         <div className="thread--detail__user">
                             <img src="https://photo2.tinhte.vn/data/avatars/m/1692/1692874.jpg" alt="" />
                             <div className="thread--detail__userInfo">

@@ -1,4 +1,4 @@
-import { CreateUserDTO } from "../models/CreateUserDTO";
+import { CreateUserDTO } from "../models/dto/create_user.dto";
 import HttpService from "./http.service";
 
 const USER_PATH='/user';

@@ -1,4 +1,4 @@
-import { CreateUserDTO } from './../models/CreateUserDTO';
+import { CreateUserDTO } from '../models/dto/create_user.dto';
 import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth"
 import { auth } from "./firebase.service";
 import HttpService from "./http.service";
