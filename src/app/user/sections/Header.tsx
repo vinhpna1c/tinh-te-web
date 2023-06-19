@@ -48,6 +48,12 @@ export default function UserHeader() {
                 </div>
               </div>
             </div>
+            <div className='flex justify-center flex-row gap-10 mt-3'>
+              <div className='w-2/5 text-center indent-9 leading-loose font-medium' >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et tempor incididunt dolore magna labore.
+              Youtube: https://www.youtube.com/watch?v=dO4dncwDn6U
+              </div>
+            </div>
           </div>
         </div>
   )
