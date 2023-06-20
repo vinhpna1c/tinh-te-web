@@ -1,10 +1,10 @@
 import { CreateUserDTO } from '../models/dto/create_user.dto';
-import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth"
+import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, createUserWithEmailAndPassword } from "firebase/auth"
 import { auth } from "./firebase.service";
 import HttpService from "./http.service";
 import { createUser } from "./user.service";
 
-enum SignInStatus {
+enum AuthStatus {
     SUCCESS,
     AUTH_FIREBASE_FAIL,
     AUTH_1C_FAIL,
@@ -19,6 +19,19 @@ enum SignInMethod {
 }
 
 const AUTH_PATH = "/auth";
+
+const signUp=async(userData:CreateUserDTO)=>{
+    //create credential on Firebase
+    const firebaseUser=  await createUserWithEmailAndPassword(auth,userData.Email??'',userData.Password??'');
+    if(!firebaseUser){
+        return AuthStatus.AUTH_FIREBASE_FAIL;
+    }
+    //create user in 1C
+    const user= await createUser({...userData,UUID:firebaseUser.user.uid});
+    console.log("Create new User: "+JSON.stringify(user))
+    return AuthStatus.SUCCESS;
+
+}
 
 const signIn = async (method: SignInMethod, data?: { email: string, password: string }) => {
     let firebaseUser = null;
@@ -37,7 +50,7 @@ const signIn = async (method: SignInMethod, data?: { email: string, password: st
     }
     //handle fail with firebase
     if (!firebaseUser) {
-        return SignInStatus.AUTH_FIREBASE_FAIL
+        return AuthStatus.AUTH_FIREBASE_FAIL
     }
     //2: auth with 1C
     const result = await HttpService.post(AUTH_PATH, {
@@ -62,7 +75,7 @@ const signIn = async (method: SignInMethod, data?: { email: string, password: st
 
     //3: handle result
     //TODO: handle success data later
-    return SignInStatus.SUCCESS;
+    return AuthStatus.SUCCESS;
 }
 
 //sign in with credential
@@ -86,7 +99,7 @@ const signInWithGoogle = async () => {
 
 
 export {
-    SignInStatus,
+    AuthStatus as SignInStatus,
     SignInMethod,
     signIn,
 }

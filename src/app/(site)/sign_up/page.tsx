@@ -1,3 +1,4 @@
+'use client'
 import Link from "next/link";
 
 export default function SignUpPage() {
@@ -12,13 +13,13 @@ export default function SignUpPage() {
                     </div>
                     <div className="flex flex-col items-center px-6 py-4">
                         <img src='./images/logo_colored.png' />
-                        <input className="w-full rounded border border-gray-300 mt-8 px-3 py-2" placeholder="Tên" />
+                        <input className="w-full rounded border border-gray-300 mt-8 px-3 py-2" placeholder="Tên" onChange={(e)=>{console.log("Data change: "+e.target.value)}} />
                         <p className="text-sm">Đây là tên sẽ xuất hiện trong các bài viết của bạn. Bạn có thể sử dụng tên thật hoặc nick. Bạn không thể thay đổi tên này về sau.</p>
 
-                        <input className="w-full rounded border border-gray-300 mt-4 px-3 py-2 mb-5" placeholder="Email" />
-                        <input className="w-full rounded border border-gray-300 px-3 py-2 mb-5" placeholder="Sinh nhật" />
-                        <input className="w-full rounded border border-gray-300 mt-4 px-3 py-2 mb-5" placeholder="Mật Khẩu" />
-                        <input className="w-full rounded border border-gray-300 px-3 py-2 mb-5" placeholder="Xác nhận mật khẩu" />
+                        <input type='email' className="w-full rounded border border-gray-300 mt-4 px-3 py-2 mb-5" placeholder="Email" />
+                        <input type='datew'  className="w-full rounded border border-gray-300 px-3 py-2 mb-5" placeholder="Sinh nhật" />
+                        <input type='password' className="w-full rounded border border-gray-300 mt-4 px-3 py-2 mb-5" placeholder="Mật Khẩu" />
+                        <input type='password' className="w-full rounded border border-gray-300 px-3 py-2 mb-5" placeholder="Xác nhận mật khẩu" />
 
                         <dl className="w-full mb-3">
                             <dt className="">

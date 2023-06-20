@@ -12,6 +12,7 @@ import { useAuth } from '@/context/AuthContext';
 import { getAuth, signOut } from 'firebase/auth';
 import { auth } from '@/src/services/firebase.service';
 import CreatePostModal from '../components/CreatePostModal';
+import Link from 'next/link';
 
 export default function Header() {
     // const context= useContext(AppSessionContext);
@@ -32,11 +33,14 @@ export default function Header() {
     return (
         <div className="flex flex-row justify-between p-4">
             <div className="flex flex-row mr-2 items-center w-full">
+                <Link className='flex flex-row' href={"/"}>
+                
                 <img className="rounded-full mr-3" src="./images/logo.png" style={{ height: 40, }} />
                 <div className='flex flex-col justify-end mr-8'>
                     <p className='font-bold text-base'>TinhTe</p>
                     <p className='font-extralight text-[8px]'>M Ạ N G  X Ã  H Ộ I</p>
                 </div>
+                </Link>
                 <div className='flex flex-row px-8 py-2 rounded-full items-center md:w-1/4' style={{ backgroundColor: '#e5e6ed' }}>
                     <AiOutlineSearch size={24} />
                     <input
@@ -61,7 +65,12 @@ export default function Header() {
                                 </MenuButton>
 
                                 <MenuList backgroundColor={'white'} borderRadius={4} boxShadow={'0px 0px 1px 1px #999999'}>
-                                    <MenuItem color={"gray"} className=' p-2'><HiOutlineUserCircle className='mx-2' size={24} /> Trang cá nhân</MenuItem>
+                                    <MenuItem color={"gray"} className=' p-2'><HiOutlineUserCircle className='mx-2' size={24} />
+                                     <Link href={'/user/profile/1'}>
+                                     Trang cá nhân
+                                     </Link>
+                                     
+                                     </MenuItem>
                                     <MenuItem color={"gray"} className='p-2'><FaUserEdit className='mx-2' size={24} /> Thông tin cá nhân</MenuItem>
                                     <MenuItem color={"gray"} className=' p-2'><HiOutlineLockClosed className='mx-2' size={24} /> Đổi mật khẩu</MenuItem>
                                     <MenuItem color={"gray"} className=' p-2'><AiOutlineSetting className='mx-2' size={24} /> Cài đặt</MenuItem>

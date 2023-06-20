@@ -39,7 +39,7 @@ import { Post } from '../models/domain/post'
 export default function Home() {
 
   const firebaseApp = initFirebase();
-
+  const router=useRouter();
   const [posts, setPosts] = useState<Post[]>([]);
   useEffect(() => {
     getTopLatestPost().then((value) => {
@@ -205,6 +205,9 @@ export default function Home() {
               <div className='grid grid-cols-2'>
                 {
                   tempDataCommunityItem.map((item, index) => {
+                    if(index>3){
+                      return (<></>)
+                    }
                     return (
                       <Link key={index} href="/thread/1">
                         <CommunityItem imgURL={item.imgURL} badge={item.badge} itemnumber={item.itemnumber} />
@@ -217,7 +220,7 @@ export default function Home() {
                   <button
                     className='rounded-sm bg-gray-400 w-full px-4 py-2 text-sm font-normal'
                     onClick={() => {
-                      // router.push('/community');
+                      router.push('/community');
                     }}
                   >Xem tất cả (84)</button>
 

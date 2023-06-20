@@ -64,12 +64,12 @@ function ThreadDetail() {
                     </div>
 
                     <div className="thread--detail__title">
-                        <h1>Computex 2023: Trên tay nhanh hub USB-C WFS-U đa năng và SSD di động XS2000 của Kingston</h1>
+                        <h1>{post?.Title}</h1>
                     </div>
 
                     <div className="thread--detail__post">
                         <div dangerouslySetInnerHTML={{__html: post?.Content??''}} />
-                        <div className="thread--detail__user">
+                        {/* <div className="thread--detail__user">
                             <img src="https://photo2.tinhte.vn/data/avatars/m/1692/1692874.jpg" alt="" />
                             <div className="thread--detail__userInfo">
                                 <div className="thread--detail__userInfo_1">
@@ -97,7 +97,7 @@ function ThreadDetail() {
                             <p>Tên gọi chính xác của nó là Kingston WFS-U (Workflow Station Mỗi một cái hub con như vậy sẽ có một tính năng khác nhau, ví dụ nếu anh em chỉ làm về hình ảnh đơn thuần, có rất nhiều thẻ SD thì có thể mua 4 cái hub con khe thẻ SD để sử dụng, mỗi cái hub con như vậy là 2 thẻ, 4 cái là 8 thẻ).</p>
                             <img src="https://photo2.tinhte.vn/data/attachment-files/2023/05/6448112_trentay-kingston-XS2000-SSD-tinhte-computex2023-pnghuy-08.jpg" alt="" />
                             <p>Cả bộ sẽ kết nối qua cổng USB-C 3.2 gen 2 (10Gbps) và một cổng DC cấp nguồn riêng. 4 khu vực để chứa hub con sẽ là 4 cái cổng USB-C đực, anh em chỉ việc mua hub con gắn vào là được.</p>
-                        </div>
+                        </div> */}
                     </div>
 
                     <div className="thread--detail__comments">
