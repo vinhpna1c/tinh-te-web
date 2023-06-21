@@ -10,7 +10,7 @@ export default function UserHeader() {
                 src="https://demos.creative-tim.com/notus-js/assets/img/team-2-800x800.jpg" />
             </div>
             <div className='font-semibold'>
-              Le Thuan
+              Vinh Phan
             </div>
             <div className='flex flex-row gap-10'>
               <div className='flex flex-row gap-2'>

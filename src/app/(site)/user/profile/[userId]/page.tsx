@@ -2,12 +2,13 @@
 import { useState } from "react";
 import HomeWall from "../../components/HomeWall";
 import UserLayout from "../../container";
+import AlbumAndPhotos from "../../components/AlbumAndPhotos";
 import UserNavbar from '../../sections/NavBar';
 import { AiFillEdit } from "react-icons/ai";
 import PersonalInformation from "../../components/PersonalInformation";
 
 const tabHeaders = ['Tường nhà', 'Album và ảnh', 'Thông tin cá nhân'];
-const tabs = [<HomeWall />, <div>Album</div>, <PersonalInformation />];
+const tabs = [<HomeWall />, <AlbumAndPhotos/>, <PersonalInformation />];
 
 export default function UserProfile() {
     const [selectedIndex, setSelectedIndex] = useState(0);

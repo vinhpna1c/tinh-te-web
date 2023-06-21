@@ -20,7 +20,7 @@ export default function PersonalInformation() {
               <div className='flex flex-col border-b  border-b-gray-400'>
                 <div className='flex flex-row max-w-full'>
                   <div className='w-1/2 flex justify-end pr-3'>Họ và tên:</div>
-                  <div className='w-1/2'>Lê Văn Thuận</div>
+                  <div className='w-1/2'>Vinh Phan</div>
                 </div>
                 <div className='flex flex-row justify-center max-w-full'>
                   <div className='w-1/2 flex justify-end pr-3'>Số điện thoại:</div>
@@ -28,7 +28,7 @@ export default function PersonalInformation() {
                 </div>
                 <div className='flex flex-row justify-center max-w-full mb-6'>
                   <div className='w-1/2 flex justify-end pr-3'>Email:</div>
-                  <div className='w-1/2'>thuanbcd@gmail.com</div>
+                  <div className='w-1/2'>vinhphanbcd@gmail.com</div>
                 </div>
               </div>
 
